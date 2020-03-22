@@ -13,6 +13,7 @@
     "@grpc/proto-loader": "^0.5.3",
     "bluebird": "^3.5.0",
     "co": "^4.6.0",
+    "dotenv": "^8.2.0",
     "grpc": "^1.3.2",
     "line-reader-sync": "^0.1.0"
   }
