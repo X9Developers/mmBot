@@ -91,7 +91,7 @@ async function getNewOrder(side) {
     return {
       pairId: env['PAIRID'],
       side: 0,
-      funds: {value: ((Math.floor(Math.random() * max) % 13) + 13).toString()},
+      funds: {value: ((Math.floor(Math.random() * max) % 13) / 13 + 13).toString()},
       price: {value: ((Math.floor(Math.random() * max) % 100000) + 100000).toString()},
     };
   }
@@ -99,8 +99,8 @@ async function getNewOrder(side) {
     return {
       pairId: env['PAIRID'],
       side: 1,
-      funds: {value: ((Math.floor(Math.random() * max) % 10000) + 10000).toString()}, // 10000 ~ 20000
-      price: {value: ((Math.floor(Math.random() * max) % 100000) + 100000).toString()}, // 100000 ~ 200000
+      funds: {value: ((Math.floor(Math.random() * max) % 4000) + 6000).toString()}, // 10000 ~ 20000
+      price: {value: ((Math.floor(Math.random() * max) % 30000) + 170000).toString()}, // 100000 ~ 200000
     };
   }
 
@@ -200,7 +200,9 @@ async function PlaceOrder(PlaceOrderLimit) {
     if (res.failure) {
       testResult("PlaceOrder", 0, res);
     }
-    testResult("PlaceOrder", 1);
+    else {
+      testResult("PlaceOrder", 1);
+    }
     console.log(res);
     return PlaceOrder(PlaceOrderLimit - 1);
   });
