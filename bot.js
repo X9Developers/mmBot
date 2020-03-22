@@ -71,9 +71,6 @@ const testResult = function(text, result, msg) {
   else {
     console.log(text + ": \x1b[31mnot passed\x1b[0m");
     if (msg) console.log(msg);
-
-    console.log("\x1b[31mPlase Try Again!\x1b[0m");
-    process.exit();
   }
 }
 
