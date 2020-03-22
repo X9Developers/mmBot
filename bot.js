@@ -192,8 +192,13 @@ async function PlaceOrder(PlaceOrderLimit) {
   console.log(buyorsell);
   const newOrder = await getNewOrder(buyorsell);
   ordersLssd.PlaceOrder( newOrder, function(err, res) {
-    if (err || res.failure) {
-      testResult("PlaceOrder", 0, err ? err : res);
+    if (err) {
+      testResult("PlaceOrder", 0, err);
+      console.log('Check your swap server, please.');
+      process.exit();
+    }
+    if (res.failure) {
+      testResult("PlaceOrder", 0, res);
     }
     testResult("PlaceOrder", 1);
     console.log(res);
