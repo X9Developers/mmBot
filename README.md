@@ -18,7 +18,7 @@ Create `.env` in the project root.
 | XSN_CERT_PATH     | LTC Cert Path         | /root/.lnd_xsn/tls.cert   |
 | PAIRID            | PairId                | XSN_LTC                   |
 | PLACE_ORDER_LIMIT | Count Limit(-1 : MAX) | 5                         |
-
+| BUY_OR_SELL       | buy, sell, both       | both                      |
 # Run
 
 - npm install

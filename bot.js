@@ -71,9 +71,9 @@ const testResult = function(text, result, msg) {
   else {
     console.log(text + ": \x1b[31mnot passed\x1b[0m");
     if (msg) console.log(msg);
-
+/*
     console.log("\x1b[31mPlase Try Again!\x1b[0m");
-    process.exit();
+    process.exit();*/
   }
 }
 
@@ -179,12 +179,24 @@ async function PlaceOrder(PlaceOrderLimit) {
     console.log("\x1b[32mfinished!\x1b[0m");
     process.exit();
   }
-  const newOrder = await getNewOrder(PlaceOrderLimit % 2);
+  let buyorsell = 1;
+  if (env['BUY_OR_SELL'] === 'both') {
+    buyorsell = (PlaceOrderLimit % 2 + 2) % 2;
+  }
+  else if (env['BUY_OR_SELL'] === 'buy') {
+    buyorsell = 0;
+  }
+  else if (env['BUY_OR_SELL'] === 'sell') {
+    buyorsell = 1;
+  }
+  console.log(buyorsell);
+  const newOrder = await getNewOrder(buyorsell);
   ordersLssd.PlaceOrder( newOrder, function(err, res) {
     if (err || res.failure) {
       testResult("PlaceOrder", 0, err ? err : res);
     }
     testResult("PlaceOrder", 1);
+    console.log(res);
     return PlaceOrder(PlaceOrderLimit - 1);
   });
 }
