@@ -99,8 +99,8 @@ async function getNewOrder(side) {
     return {
       pairId: env['PAIRID'],
       side: 1,
-      funds: {value: ((Math.floor(Math.random() * max) % 4000) + 6000).toString()}, // 10000 ~ 20000
-      price: {value: ((Math.floor(Math.random() * max) % 30000) + 170000).toString()}, // 100000 ~ 200000
+      funds: {value: ((Math.floor(Math.random() * max) % 4000) + 6000).toString()},
+      price: {value: ((Math.floor(Math.random() * max) % 30000) + 170000).toString()},
     };
   }
 
