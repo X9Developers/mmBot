@@ -39,6 +39,7 @@ const currencies = [
   }
 ];
 
+let totalPlacedOrder = 0;
 const PlaceOrderLimit = env['PLACE_ORDER_LIMIT'];
 
 const getClient = function (Client) {
@@ -91,8 +92,8 @@ async function getNewOrder(side) {
     return {
       pairId: env['PAIRID'],
       side: 0,
-      funds: {value: ((Math.floor(Math.random() * max) % 13) / 13 + 13).toString()},
-      price: {value: ((Math.floor(Math.random() * max) % 100000) + 100000).toString()},
+      funds: {value: ((Math.floor(Math.random() * max) % 3) + 13).toString()},
+      price: {value: ((Math.floor(Math.random() * max) % 30000) + 170000).toString()},
     };
   }
   else {
@@ -189,19 +190,19 @@ async function PlaceOrder(PlaceOrderLimit) {
   else if (env['BUY_OR_SELL'] === 'sell') {
     buyorsell = 1;
   }
-  console.log(buyorsell);
   const newOrder = await getNewOrder(buyorsell);
   ordersLssd.PlaceOrder( newOrder, function(err, res) {
     if (err) {
-      testResult("PlaceOrder", 0, err);
+      testResult("PlaceOrder(" + totalPlacedOrder + ")", 0, err);
       console.log('Check your swap server, please.');
       process.exit();
     }
     if (res.failure) {
-      testResult("PlaceOrder", 0, res);
+      testResult("PlaceOrder(" + totalPlacedOrder + ")", 0, res);
     }
     else {
-      testResult("PlaceOrder", 1);
+      testResult("PlaceOrder(" + totalPlacedOrder + ")", 1);
+      totalPlacedOrder ++;
     }
     console.log(res);
     return PlaceOrder(PlaceOrderLimit - 1);
