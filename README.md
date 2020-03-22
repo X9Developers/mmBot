@@ -14,7 +14,7 @@ Create `.env` in the project root.
 | BTC_LND_CHANNEL   | BTC Lnd Channel       | localhost:10002           |
 | XSN_LND_CHANNEL   | XSN Lnd Channel       | localhost:10003           |
 | LTC_CERT_PATH     | LTC Cert Path         | /root/.lnd_ltc/tls.cert   |
-| BTC_CERT_PATH     | BTC Cert Path         | /root/.lnd_xsn/tls.cert   |
+| BTC_CERT_PATH     | BTC Cert Path         | /root/.lnd_btc/tls.cert   |
 | XSN_CERT_PATH     | LTC Cert Path         | /root/.lnd_xsn/tls.cert   |
 | PAIRID            | PairId                | XSN_LTC                   |
 | PLACE_ORDER_LIMIT | Count Limit(-1 : MAX) | 5                         |
